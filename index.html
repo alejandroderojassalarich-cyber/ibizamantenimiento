@@ -5,86 +5,95 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Ibiza Mantenimiento</title>
 
-<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;600&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;700&display=swap" rel="stylesheet">
 
 <style>
-body {
-  font-family: 'Poppins', sans-serif;
-  margin: 0;
-  background: #f4f6f8;
-  color: #333;
+body{
+  margin:0;
+  font-family:'Poppins',sans-serif;
+  background:#f4f6f8;
+  color:#222;
 }
 
-header {
-  background: url('https://images.unsplash.com/photo-1581092918056-0c4c3acd3789') center/cover;
-  color: white;
-  padding: 100px 20px;
-  text-align: center;
+header{
+  background:url('https://images.unsplash.com/photo-1581092160607-ee22621dd758') center/cover;
+  padding:120px 20px;
+  text-align:center;
+  color:white;
 }
 
-h1 { margin: 0; font-size: 40px; }
-
-.section {
-  padding: 60px 20px;
-  max-width: 900px;
-  margin: auto;
+header h1{
+  font-size:42px;
+  margin:0;
 }
 
-.section:nth-child(even) {
-  background: #fff;
+header p{
+  font-size:18px;
+  opacity:0.9;
 }
 
-.section:nth-child(odd) {
-  background: #f1f4f8;
+.btn{
+  display:inline-block;
+  margin-top:15px;
+  padding:12px 20px;
+  background:#25D366;
+  color:white;
+  text-decoration:none;
+  border-radius:8px;
+  font-weight:600;
 }
 
-.card {
-  background: white;
-  padding: 25px;
-  margin-bottom: 25px;
-  border-radius: 12px;
-  box-shadow: 0 10px 25px rgba(0,0,0,0.08);
+.container{
+  max-width:1000px;
+  margin:auto;
+  padding:40px 20px;
 }
 
-.btn {
-  display: inline-block;
-  padding: 12px 20px;
-  background: linear-gradient(45deg, #25D366, #1ebe5d);
-  color: white;
-  text-decoration: none;
-  border-radius: 6px;
-  margin-top: 15px;
-  font-weight: bold;
+.section-title{
+  font-size:26px;
+  margin-bottom:20px;
 }
 
-.btn.secondary {
-  background: #0b3d91;
+.grid{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
+  gap:20px;
 }
 
-footer {
-  text-align: center;
-  padding: 20px;
-  background: #222;
-  color: white;
+.card{
+  background:white;
+  border-radius:12px;
+  padding:20px;
+  box-shadow:0 8px 20px rgba(0,0,0,0.08);
 }
 
-iframe {
-  width: 100%;
-  height: 300px;
-  border: 0;
-  border-radius: 10px;
+.card h3{
+  margin-top:0;
 }
 
-.whatsapp-float {
-  position: fixed;
-  bottom: 20px;
-  right: 20px;
-  background: #25D366;
-  color: white;
-  padding: 15px;
-  border-radius: 50%;
-  text-decoration: none;
-  font-size: 22px;
+img{
+  width:100%;
+  border-radius:10px;
+  margin-bottom:10px;
+}
+
+footer{
+  text-align:center;
+  padding:30px;
+  background:#111;
+  color:white;
+}
+
+.whatsapp{
+  position:fixed;
+  bottom:20px;
+  right:20px;
+  background:#25D366;
+  color:white;
+  padding:15px;
+  border-radius:50%;
+  font-size:22px;
+  text-decoration:none;
 }
 </style>
 </head>
@@ -94,76 +103,63 @@ iframe {
 <header>
   <h1>Ibiza Mantenimiento</h1>
   <p>Soluciones profesionales para negocios, hoteles y viviendas</p>
-
-  <a class="btn" href="https://wa.me/34691774358?text=Hola%20quiero%20información">WhatsApp Directo</a>
+  <a class="btn" href="https://wa.me/34691774358?text=Hola%20quiero%20información">Contactar por WhatsApp</a>
 </header>
 
-<div class="section">
+<div class="container">
 
-<div class="card">
-<h2>Servicios para empresas y hoteles</h2>
-<ul>
-<li>Climatización</li>
-<li>Equipos industriales</li>
-<li>Instalaciones eléctricas</li>
-<li>Prevención de averías</li>
-<li>Planes de mantenimiento</li>
-</ul>
-</div>
+  <div class="section-title">Servicios principales</div>
 
-<div class="card">
-<h2>Viviendas y alquileres</h2>
-<ul>
-<li>Fontanería</li>
-<li>Electricidad</li>
-<li>Aire acondicionado</li>
-<li>Reparaciones</li>
-<li>Jardines y piscinas</li>
-</ul>
-</div>
+  <div class="grid">
 
-<div class="card">
-<h2>Mantenimiento Fitness</h2>
-<ul>
-<li>Cintas de correr</li>
-<li>Elípticas</li>
-<li>Máquinas de fuerza</li>
-<li>Ajustes y lubricación</li>
-<li>Revisiones preventivas</li>
-</ul>
-</div>
+    <div class="card">
+      <img src="https://images.unsplash.com/photo-1581092334651-ddf26d9a09d0">
+      <h3>Empresas y Hoteles</h3>
+      <p>Climatización, electricidad, equipos industriales y mantenimiento integral.</p>
+    </div>
 
-<div class="card">
-<h2>Pintura</h2>
-<ul>
-<li>Interior y exterior</li>
-<li>Preparación de superficies</li>
-<li>Pintura decorativa</li>
-<li>Limpieza final</li>
-</ul>
-</div>
+    <div class="card">
+      <img src="https://images.unsplash.com/photo-1505691938895-1758d7feb511">
+      <h3>Viviendas</h3>
+      <p>Fontanería, electricidad, aire acondicionado y reparaciones generales.</p>
+    </div>
 
-<div class="card">
-<h2>Ubicación</h2>
-<p>Pou Roig nº7, Es Canar, Ibiza</p>
+    <div class="card">
+      <img src="https://images.unsplash.com/photo-1599058917212-d750089bc07e">
+      <h3>Fitness</h3>
+      <p>Mantenimiento de cintas, elípticas y maquinaria de gimnasio.</p>
+    </div>
 
-<iframe 
-src="https://www.google.com/maps?q=Pou%20Roig%207%20Es%20Canar%20Ibiza&output=embed">
-</iframe>
-</div>
+    <div class="card">
+      <img src="https://images.unsplash.com/photo-1583337130417-3346a1be7dee">
+      <h3>Pintura</h3>
+      <p>Interior, exterior y acabados profesionales en viviendas y locales.</p>
+    </div>
 
-<div class="card">
-<h2>Contacto</h2>
-<p>📞 +34 691 77 43 58</p>
-<p>📧 infoibizamantenimiento@gmail.com</p>
+    <div class="card">
+      <img src="https://images.unsplash.com/photo-1501117716987-c8e1ecb2100a">
+      <h3>Piscinas</h3>
+      <p>Limpieza, mantenimiento y control de calidad del agua.</p>
+    </div>
 
-<form action="mailto:infoibizamantenimiento@gmail.com" method="post" enctype="text/plain">
-<input type="text" name="nombre" placeholder="Nombre" required><br><br>
-<input type="email" name="email" placeholder="Email" required><br><br>
-<textarea name="mensaje" placeholder="Mensaje" required></textarea><br><br>
-<button class="btn secondary" type="submit">Enviar</button>
-</form>
-</div>
+  </div>
+
+  <div class="section-title" style="margin-top:40px;">Ubicación</div>
+
+  <div class="card">
+    <p>Pou Roig nº7, Es Canar, Ibiza</p>
+    <iframe 
+      src="https://www.google.com/maps?q=Pou%20Roig%207%20Es%20Canar%20Ibiza&output=embed"
+      width="100%" height="300" style="border:0;border-radius:10px;">
+    </iframe>
+  </div>
+
+  <div class="section-title">Contacto</div>
+
+  <div class="card">
+    <p>📞 +34 691 77 43 58</p>
+    <p>📧 infoibizamantenimiento@gmail.com</p>
+  </div>
 
 </div>
 
@@ -171,7 +167,7 @@ src="https://www.google.com/maps?q=Pou%20Roig%207%20Es%20Canar%20Ibiza&output=em
 © 2026 Ibiza Mantenimiento
 </footer>
 
-<a class="whatsapp-float" href="https://wa.me/34691774358?text=Hola%20quiero%20información">💬</a>
+<a class="whatsapp" href="https://wa.me/34691774358?text=Hola%20quiero%20información">💬</a>
 
 </body>
 </html>
