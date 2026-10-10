@@ -1,393 +1,549 @@
-<!DOCTYPE html>
-<html lang="es">
-<head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Ibiza Mantenimiento</title>
-
-<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
 
 <style>
-body{
-  margin:0;
-  font-family:'Poppins',sans-serif;
-  background:#f4f6f8;
-  color:#222;
+:root {
+  --blue:    #002EB4;
+  --blue2:   #0057ff;
+  --bg:      #f4f6f8;
+  --white:   #ffffff;
+  --fg:      #0a0f1e;
+  --fg2:     #6b7280;
+  --pill-bg: #eef2ff;
+  --wa:      #25D366;
+}
+*, *::before, *::after { box-sizing: border-box; margin: 0; }
+body {
+  font-family: 'Poppins', sans-serif;
+  background: var(--bg);
+  color: var(--fg);
+  margin: 0;
 }
 
-/* HERO */
-header{
-  background:
-    linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.4)),
-    url('./casa.jpg') center/cover no-repeat;
-  padding:120px 20px;
-  text-align:center;
-  color:white;
+/* ── NAV ── */
+nav {
+  position: sticky; top: 0; z-index: 1000;
+  background: #fff;
+  padding: 14px 20px;
+  display: flex; align-items: center; justify-content: center;
+  gap: 24px; flex-wrap: wrap;
+  box-shadow: 0 1px 6px rgba(0,0,0,.07);
 }
-header h1{
-  font-size:44px;
-  margin:0;
+nav a { color: #111; text-decoration: none; font-weight: 500; font-size: 14px; }
+nav a:first-child { font-weight: 700; }
+
+/* ── HERO ── */
+header {
+  background: linear-gradient(rgba(0,0,0,.45),rgba(0,0,0,.45)), url('./casa.jpg') center/cover no-repeat;
+  padding: 120px 20px;
+  text-align: center;
+  color: #fff;
+}
+header h1 { font-size: clamp(2rem,5vw,3rem); font-weight: 800; margin-bottom: 12px; }
+header p  { font-size: 18px; opacity: .9; margin-bottom: 0; }
+.btn-wa {
+  display: inline-block; margin-top: 20px;
+  padding: 13px 28px;
+  background: var(--wa); color: #fff;
+  text-decoration: none; border-radius: 10px;
+  font-weight: 700; font-size: 15px;
 }
 
-header p{
-  font-size:18px;
-  opacity:0.9;
+/* ── SECTION HEADER ── */
+.sec-head { text-align: center; padding: 64px 20px 36px; }
+.sec-label {
+  font-size: 11px; font-weight: 700; letter-spacing: 3px;
+  text-transform: uppercase; color: var(--blue); display: block; margin-bottom: 8px;
+}
+.sec-title { font-size: clamp(1.5rem,3.5vw,2rem); font-weight: 800; color: var(--fg); margin-bottom: 8px; }
+.sec-sub   { font-size: 15px; color: var(--fg2); }
+
+/* ── PRECIOS ── */
+.precios-wrap {
+  background: #eef2ff;
+  padding: 0 20px 72px;
+}
+.precios-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 24px;
+  max-width: 1040px;
+  margin: 0 auto;
+}
+@media (max-width: 860px) { .precios-grid { grid-template-columns: 1fr; max-width: 440px; } }
+
+.precio-card {
+  background: var(--white);
+  border-radius: 18px;
+  overflow: hidden;
+  box-shadow: 0 6px 28px rgba(0,46,180,.10);
+  border: 2px solid transparent;
+  display: flex; flex-direction: column;
+}
+.precio-card.featured {
+  border-color: var(--blue2);
+  box-shadow: 0 10px 36px rgba(0,87,255,.18);
+  position: relative;
+}
+.badge-popular {
+  position: absolute; top: 16px; right: -30px;
+  background: #e02020; color: #fff;
+  font-size: 9px; font-weight: 800; letter-spacing: 1.5px;
+  text-transform: uppercase; padding: 5px 44px;
+  transform: rotate(35deg); z-index: 2;
 }
 
-.btn{
-  display:inline-block;
-  margin-top:15px;
-  padding:12px 20px;
-  background:#25D366;
-  color:white;
-  text-decoration:none;
-  border-radius:8px;
-  font-weight:600;
+.card-head {
+  padding: 22px 24px 18px;
+  background: var(--blue);
+}
+.precio-card.featured .card-head { background: var(--blue2); }
+
+.card-label {
+  font-size: 10px; font-weight: 700; letter-spacing: 2px;
+  text-transform: uppercase; color: rgba(255,255,255,.65);
+  margin-bottom: 6px;
+}
+.card-title {
+  font-size: 20px; font-weight: 800; color: #fff;
+  line-height: 1.2;
 }
 
-/* TITULOS */
-.section-title{
-  font-size:28px;
-  text-align:center;
-  margin:60px 0 20px;
+.card-body {
+  padding: 20px 22px 22px;
+  display: flex; flex-direction: column; flex: 1;
+}
+.card-desc {
+  font-size: 13px; color: var(--fg2);
+  margin-bottom: 18px; line-height: 1.55;
 }
 
-/* GRID */
-.grid{
-  display:grid;
-  grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
-  gap:25px;
-  max-width:1100px;
-  margin:auto;
-  padding:0 20px;
+/* price rows — same height, same baseline */
+.price-rows { display: flex; flex-direction: column; gap: 9px; margin-bottom: 22px; }
+.price-row {
+  display: flex; align-items: center;
+  background: var(--pill-bg); border-radius: 9px;
+  padding: 10px 14px; gap: 0;
+}
+.price-name { font-size: 13px; font-weight: 500; color: var(--fg); flex: 1; }
+.price-val  {
+  font-size: 14px; font-weight: 700; color: var(--blue);
+  white-space: nowrap; margin-left: auto;
+}
+.precio-card.featured .price-val { color: var(--blue2); }
+
+/* WhatsApp button */
+.btn-presupuesto {
+  display: block; text-align: center;
+  background: var(--wa); color: #fff;
+  font-family: 'Poppins', sans-serif;
+  font-size: 14px; font-weight: 700;
+  text-decoration: none;
+  padding: 13px 20px; border-radius: 10px;
+  margin-top: auto;
+}
+.btn-presupuesto:hover { background: #1dbd5a; }
+
+/* ── SLIDER ── */
+.slider-section { padding: 0 20px 72px; }
+.slider-inner {
+  position: relative; max-width: 1100px;
+  margin: 0 auto; overflow: hidden;
+  border-radius: 16px;
+}
+.slider-track {
+  display: flex; transition: transform .4s ease; height: 420px;
+}
+.slide { min-width: 100%; position: relative; }
+.slide img { width: 100%; height: 100%; object-fit: cover; }
+.slide-caption {
+  position: absolute; bottom: 0; left: 0; right: 0;
+  padding: 20px 28px;
+  background: linear-gradient(transparent, rgba(0,0,0,.7));
+}
+.slide-tag {
+  background: var(--blue); color: #fff;
+  font-size: 11px; font-weight: 700;
+  padding: 4px 12px; border-radius: 20px; letter-spacing: 1px;
+}
+.slide-title {
+  color: #fff; font-size: 18px; font-weight: 700;
+  margin: 8px 0 0;
+}
+.slider-btn {
+  position: absolute; top: 50%; transform: translateY(-50%);
+  background: rgba(255,255,255,.9); border: none;
+  width: 44px; height: 44px; border-radius: 50%;
+  font-size: 20px; cursor: pointer;
+  box-shadow: 0 2px 8px rgba(0,0,0,.2);
+}
+.slider-btn.prev { left: 16px; }
+.slider-btn.next { right: 16px; }
+.slider-dots {
+  position: absolute; bottom: 16px; right: 28px;
+  display: flex; gap: 6px;
+}
+.slider-dots span {
+  width: 8px; height: 8px; border-radius: 50%;
+  background: #fff; cursor: pointer; opacity: .4;
+  transition: opacity .2s;
+}
+.slider-dots span.active { opacity: 1; }
+
+/* ── SERVICIOS ── */
+.servicios-section { padding: 0 20px 72px; }
+.servicios-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(240px,1fr));
+  gap: 22px; max-width: 1100px; margin: 0 auto;
+}
+.srv-card {
+  background: #fff; border-radius: 14px; overflow: hidden;
+  box-shadow: 0 8px 24px rgba(0,0,0,.07);
+}
+.srv-card img { width: 100%; height: 180px; object-fit: cover; display: block; }
+.srv-body { padding: 18px; }
+.srv-body h3 { margin: 0 0 8px; font-size: 17px; font-weight: 700; }
+.srv-body p  { margin: 0; font-size: 13px; color: var(--fg2); line-height: 1.5; }
+
+/* ── POR QUÉ ── */
+.porque-section { background: #eef2ff; padding: 0 20px 72px; }
+.porque-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px,1fr));
+  gap: 18px; max-width: 1100px; margin: 0 auto;
+}
+.porque-card {
+  background: #fff; border-radius: 14px; padding: 22px;
+  box-shadow: 0 4px 16px rgba(0,46,180,.08);
+}
+.porque-card h3 { font-size: 16px; font-weight: 700; margin: 0 0 8px; color: var(--blue); }
+.porque-card p  { font-size: 13px; color: var(--fg2); margin: 0; }
+
+/* ── TESTIMONIOS ── */
+.testimonios-section { padding: 0 20px 72px; }
+.test-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(240px,1fr));
+  gap: 20px; max-width: 1100px; margin: 0 auto;
+}
+.test-card {
+  background: #fff; border-radius: 14px; padding: 22px;
+  box-shadow: 0 6px 20px rgba(0,0,0,.07);
+}
+.test-stars { color: #f5a623; font-size: 18px; margin-bottom: 10px; }
+.test-text   { font-size: 14px; color: var(--fg2); margin-bottom: 14px; line-height: 1.55; }
+.test-author { font-size: 14px; font-weight: 700; color: var(--fg); }
+.test-city   { font-size: 12px; color: var(--fg2); }
+
+/* ── FORMULARIO ── */
+.form-section {
+  max-width: 700px; margin: 0 auto 72px;
+  background: #fff; padding: 36px;
+  border-radius: 16px; box-shadow: 0 10px 30px rgba(0,0,0,.08);
+}
+.form-section h2 { font-size: 22px; font-weight: 800; margin-bottom: 6px; }
+.form-section p  { font-size: 14px; color: var(--fg2); margin-bottom: 20px; }
+input, textarea {
+  width: 100%; padding: 11px 14px; margin-top: 10px;
+  border: 1px solid #dde; border-radius: 9px;
+  font-family: 'Poppins', sans-serif; font-size: 14px;
+}
+textarea { min-height: 100px; }
+.btn-submit {
+  display: inline-block; margin-top: 18px;
+  padding: 13px 28px; background: var(--wa);
+  color: #fff; text-decoration: none; border-radius: 10px;
+  font-weight: 700; font-size: 14px; border: none; cursor: pointer;
+  font-family: 'Poppins', sans-serif;
 }
 
-/* TARJETAS */
-.card{
-  background:white;
-  border-radius:14px;
-  overflow:hidden;
-  box-shadow:0 10px 25px rgba(0,0,0,0.08);
+/* ── FOOTER ── */
+footer {
+  text-align: center; padding: 30px 20px;
+  background: #111; color: #fff;
+  font-size: 14px;
 }
+footer a { color: #FFD700; text-decoration: none; }
 
-/* IMAGEN UNIFORME */
-.card img{
-  width:100%;
-  height:180px;
-  object-fit:cover;
-}
-
-.card-content{
-  padding:18px;
-}
-
-.card h3{
-  margin-top:0;
-  font-size:18px;
-}
-
-/* FORMULARIO */
-.form-section{
-  max-width:700px;
-  margin:60px auto;
-  background:white;
-  padding:30px;
-  border-radius:12px;
-  box-shadow:0 10px 25px rgba(0,0,0,0.08);
-}
-
-input, textarea{
-  width:100%;
-  padding:10px;
-  margin-top:10px;
-  border:1px solid #ddd;
-  border-radius:8px;
-}
-
-textarea{
-  min-height:100px;
-}
-
-/* FOOTER */
-footer{
-  text-align:center;
-  padding:30px;
-  background:#111;
-  color:white;
-}
-
-/* WHATSAPP FLOAT */
-.whatsapp{
-  position:fixed;
-  bottom:20px;
-  right:20px;
-  background:#25D366;
-  color:white;
-  padding:15px;
-  border-radius:50%;
-  font-size:22px;
-  text-decoration:none;
+/* ── WA FLOAT ── */
+.wa-float {
+  position: fixed; bottom: 20px; right: 20px;
+  background: var(--wa); color: #fff;
+  width: 54px; height: 54px; border-radius: 50%;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 24px; text-decoration: none;
+  box-shadow: 0 4px 16px rgba(37,211,102,.4);
 }
 </style>
-</head>
 
-<body>
-<nav style="position:sticky;top:0;z-index:1000;background:#ffffff;padding:14px 20px;display:flex;align-items:center;justify-content:center;gap:24px;flex-wrap:wrap;font-family:'Poppins',sans-serif;">
-  <a href="./index.html" style="color:#111111;text-decoration:none;font-weight:600;font-size:14px;"> Inicio</a>
-  <a href="./mantenimiento-piscinas-ibiza.html" style="color:#111111;text-decoration:none;font-weight:500;font-size:14px;"> Piscinas</a>
-  <a href="./aire-acondicionado-ibiza.html" style="color:#111111;text-decoration:none;font-weight:500;font-size:14px;"> Aire Acondicionado</a>
-<a href="./pintura-ibiza.html" style="color:#111111;text-decoration:none;font-weight:500;font-size:14px;">Pintura</a>
-<a href="./mantenimiento-gimnasios-ibiza.html" style="color:#111111;text-decoration:none;font-weight:500;font-size:14px;">Gimnasios</a>
-<a href="./mantenimiento-villas-ibiza.html" style="color:#111111;text-decoration:none;font-weight:500;font-size:14px;">Villas</a></nav>
+<!-- NAV -->
+<nav>
+  <a href="./index.html">Inicio</a>
+  <a href="./mantenimiento-piscinas-ibiza.html">Piscinas</a>
+  <a href="./aire-acondicionado-ibiza.html">Aire Acondicionado</a>
+  <a href="./pintura-ibiza.html">Pintura</a>
+  <a href="./mantenimiento-gimnasios-ibiza.html">Gimnasios</a>
+  <a href="./mantenimiento-villas-ibiza.html">Villas</a>
+</nav>
+
+<!-- HERO -->
 <header>
   <h1>Ibiza Mantenimiento</h1>
   <p>Servicios profesionales en toda Ibiza</p>
-  <a class="btn" href="https://wa.me/34691774358?text=Hola%20quiero%20información">WhatsApp</a>
+  <a class="btn-wa" href="https://wa.me/34691774358?text=Hola%20quiero%20información">WhatsApp</a>
 </header>
 
-<!-- SERVICIOS -->
-<div class="section-title">Servicios</div>
-
-<div class="grid">
-
-<div class="card">
-<img src="https://images.unsplash.com/photo-1566073771259-6a8506099945">
-<div class="card-content">
-<h3>Empresas y Hoteles</h3>
-<p>Climatización, electricidad, mantenimiento integral. Equipos industriales, instalaciones eléctricas, prevención de averías, planes de mantenimiento.</p>
-</div>
-</div>
-
-<div class="card">
-<img src="./Casa Ibiza.png">
-<div class="card-content">
-<h3>Viviendas y Villas de lujo</h3>
-<p>Mantenimiento del hogar, fontanería, electricidad, aire acondicionado, reparaciones generales, jardines y piscinas.</p>
-</div>
-</div>
-
-<div class="card">
-<img src="./Pintura.png">
-<div class="card-content">
-<h3>Pintura profesional</h3>
-<p>Interior, exterior y acabados profesionales, preparación de superficies, pintura decorativa, protección de mobiliario.</p>
-</div>
-</div>
-
-<div class="card">
-<img src="https://images.unsplash.com/photo-1576678927484-cc907957088c">
-<div class="card-content">
-<h3>Gimnasios y Piscinas</h3>
-<p>Cintas de correr, máquinas elípticas, equipos de fuerza, ajustes, revisiones preventivas, limpieza y control de piscinas.</p>
-</div>
-</div>
-
-</div>
-
-<!-- POR QUÉ ELEGIRNOS -->
-<div class="section-title">¿Por qué elegirnos?</div>
-
-<div class="grid">
-
-<div class="card"><div class="card-content">
-<h3>Más que un servicio</h3>
-<p>Somos tu socio de confianza en Ibiza.</p>
-</div></div>
-
-<div class="card"><div class="card-content">
-<h3>Servicio exclusivo</h3>
-<p>Solo operamos en Ibiza, conocemos cada rincón.</p>
-</div></div>
-
-<div class="card"><div class="card-content">
-<h3>Respuesta rápida</h3>
-<p>Atención inmediata y eficaz.</p>
-</div></div>
-
-<div class="card"><div class="card-content">
-<h3>24/7 con soporte profesional</h3>
-<p>Atención continua con técnicos e IA.</p>
-</div></div>
-
-<div class="card"><div class="card-content">
-<h3>Equipo cualificado</h3>
-<p>Técnicos certificados con experiencia local.</p>
-</div></div>
-
-<div class="card"><div class="card-content">
-<h3>Garantía total</h3>
-<p>Respaldamos todos nuestros trabajos.</p>
-</div></div>
-
-</div>
-<!-- TRABAJOS REALIZADOS -->
-<div style="padding:60px 20px;background:#f8f9fb;">
-  <div style="text-align:center;margin-bottom:36px;">
-    <p style="font-size:11px;font-weight:700;letter-spacing:3px;text-transform:uppercase;color:#002EB4;margin-bottom:8px;">Proyectos reales</p>
-    <h2 style="font-size:32px;font-weight:800;color:#0a0f1e;margin:0;">Trabajos realizados en Ibiza</h2>
-    <p style="font-size:15px;color:#6b7280;margin-top:8px;">Fitness · Climatización · Fontanería · Piscinas · Reformas</p>
+<!-- ① TARIFAS DE EJEMPLO -->
+<div class="precios-wrap">
+  <div class="sec-head">
+    <span class="sec-label">Tarifas orientativas</span>
+    <h2 class="sec-title">Ejemplos de reforma</h2>
+    <p class="sec-sub">Precios orientativos con material, mano de obra y gestión incluidos</p>
   </div>
 
-  <!-- SLIDER -->
-  <div style="position:relative;max-width:1100px;margin:0 auto;overflow:hidden;border-radius:16px;">
-    <div id="slider-track" style="display:flex;transition:transform .4s ease;height:420px;">
-      <div style="min-width:100%;position:relative;">
-        <img src="./Montaje force.jpeg" style="width:100%;height:100%;object-fit:cover;">
-        <div style="position:absolute;bottom:0;left:0;right:0;padding:20px 28px;background:linear-gradient(transparent,rgba(0,0,0,.7));">
-          <span style="background:#002EB4;color:white;font-size:11px;font-weight:700;padding:4px 12px;border-radius:20px;letter-spacing:1px;">FITNESS</span>
-          <p style="color:white;font-size:18px;font-weight:700;margin:8px 0 0;">Montaje Force USA G12 · Villa privada Ibiza</p>
-        </div>
+  <div class="precios-grid">
+
+    <!-- Card 1: Baño -->
+    <div class="precio-card">
+      <div class="card-head">
+        <div class="card-label">Reforma de baño</div>
+        <div class="card-title">Baño completo</div>
       </div>
-      <div style="min-width:100%;position:relative;">
-        <img src="./gym montaje.jpeg" style="width:100%;height:100%;object-fit:cover;">
-        <div style="position:absolute;bottom:0;left:0;right:0;padding:20px 28px;background:linear-gradient(transparent,rgba(0,0,0,.7));">
-          <span style="background:#002EB4;color:white;font-size:11px;font-weight:700;padding:4px 12px;border-radius:20px;letter-spacing:1px;">FITNESS</span>
-          <p style="color:white;font-size:18px;font-weight:700;margin:8px 0 0;">Instalación gimnasio completo · Ibiza</p>
+      <div class="card-body">
+        <p class="card-desc">Precio por m² incluye material, mano de obra y gestión. Ejemplo para 5 m².</p>
+        <div class="price-rows">
+          <div class="price-row">
+            <span style="display:inline-block;width:10px;height:10px;border-radius:50%;background:#4caf50;margin-right:8px;flex-shrink:0;"></span>
+            <span class="price-name">Económica</span>
+            <span class="price-val">~5.730 €</span>
+          </div>
+          <div class="price-row">
+            <span style="display:inline-block;width:10px;height:10px;border-radius:50%;background:#002EB4;margin-right:8px;flex-shrink:0;"></span>
+            <span class="price-name">Confort</span>
+            <span class="price-val">~7.300 €</span>
+          </div>
+          <div class="price-row">
+            <span style="display:inline-block;width:10px;height:10px;border-radius:50%;background:#e02020;margin-right:8px;flex-shrink:0;"></span>
+            <span class="price-name">Premium</span>
+            <span class="price-val" style="color:#e02020;">~9.400 €</span>
+          </div>
         </div>
-      </div>
-      <div style="min-width:100%;position:relative;">
-        <img src="./Aire perfumeria1.jpeg" style="width:100%;height:100%;object-fit:cover;">
-        <div style="position:absolute;bottom:0;left:0;right:0;padding:20px 28px;background:linear-gradient(transparent,rgba(0,0,0,.7));">
-          <span style="background:#002EB4;color:white;font-size:11px;font-weight:700;padding:4px 12px;border-radius:20px;letter-spacing:1px;">CLIMATIZACIÓN</span>
-          <p style="color:white;font-size:18px;font-weight:700;margin:8px 0 0;">Mantenimiento A/C · Local comercial Ibiza</p>
-        </div>
-      </div>
-      <div style="min-width:100%;position:relative;">
-        <img src="./Santander1.jpeg" style="width:100%;height:100%;object-fit:cover;">
-        <div style="position:absolute;bottom:0;left:0;right:0;padding:20px 28px;background:linear-gradient(transparent,rgba(0,0,0,.7));">
-          <span style="background:#002EB4;color:white;font-size:11px;font-weight:700;padding:4px 12px;border-radius:20px;letter-spacing:1px;">FONTANERÍA</span>
-          <p style="color:white;font-size:18px;font-weight:700;margin:8px 0 0;">Reparación urgente · Banco Santander Ibiza</p>
-        </div>
-      </div>
-      <div style="min-width:100%;position:relative;">
-        <img src="./Santander2.jpeg" style="width:100%;height:100%;object-fit:cover;">
-        <div style="position:absolute;bottom:0;left:0;right:0;padding:20px 28px;background:linear-gradient(transparent,rgba(0,0,0,.7));">
-          <span style="background:#002EB4;color:white;font-size:11px;font-weight:700;padding:4px 12px;border-radius:20px;letter-spacing:1px;">FONTANERÍA</span>
-          <p style="color:white;font-size:18px;font-weight:700;margin:8px 0 0;">Obra fontanería · Banco Santander Ibiza</p>
-        </div>
-      </div>
-      <div style="min-width:100%;position:relative;">
-        <img src="./Motor1.jpeg" style="width:100%;height:100%;object-fit:cover;">
-        <div style="position:absolute;bottom:0;left:0;right:0;padding:20px 28px;background:linear-gradient(transparent,rgba(0,0,0,.7));">
-          <span style="background:#002EB4;color:white;font-size:11px;font-weight:700;padding:4px 12px;border-radius:20px;letter-spacing:1px;">PISCINAS</span>
-          <p style="color:white;font-size:18px;font-weight:700;margin:8px 0 0;">Reparación motor piscina · Villa Ibiza</p>
-        </div>
-      </div>
-      <div style="min-width:100%;position:relative;">
-        <img src="./Fosa.jpeg" style="width:100%;height:100%;object-fit:cover;">
-        <div style="position:absolute;bottom:0;left:0;right:0;padding:20px 28px;background:linear-gradient(transparent,rgba(0,0,0,.7));">
-          <span style="background:#002EB4;color:white;font-size:11px;font-weight:700;padding:4px 12px;border-radius:20px;letter-spacing:1px;">PISCINAS</span>
-          <p style="color:white;font-size:18px;font-weight:700;margin:8px 0 0;">Mantenimiento sistema filtración · Ibiza</p>
-        </div>
-      </div>
-      <div style="min-width:100%;position:relative;">
-        <img src="./Aire casa ibiza.jpeg" style="width:100%;height:100%;object-fit:cover;">
-        <div style="position:absolute;bottom:0;left:0;right:0;padding:20px 28px;background:linear-gradient(transparent,rgba(0,0,0,.7));">
-          <span style="background:#002EB4;color:white;font-size:11px;font-weight:700;padding:4px 12px;border-radius:20px;letter-spacing:1px;">CLIMATIZACIÓN</span>
-          <p style="color:white;font-size:18px;font-weight:700;margin:8px 0 0;">Limpieza y mantenimiento A/C · Casa Ibiza</p>
-        </div>
+        <a class="btn-presupuesto"
+           href="https://wa.me/34691774358?text=Hola%2C%20me%20interesa%20una%20reforma%20de%20ba%C3%B1o.%20%C2%BFPodéis%20darme%20un%20presupuesto%3F">
+          Pedir presupuesto por WhatsApp
+        </a>
       </div>
     </div>
 
-    <!-- Botones -->
-    <button onclick="moverSlider(-1)" style="position:absolute;left:16px;top:50%;transform:translateY(-50%);background:rgba(255,255,255,.9);border:none;width:44px;height:44px;border-radius:50%;font-size:20px;cursor:pointer;box-shadow:0 2px 8px rgba(0,0,0,.2);">‹</button>
-    <button onclick="moverSlider(1)" style="position:absolute;right:16px;top:50%;transform:translateY(-50%);background:rgba(255,255,255,.9);border:none;width:44px;height:44px;border-radius:50%;font-size:20px;cursor:pointer;box-shadow:0 2px 8px rgba(0,0,0,.2);">›</button>
+    <!-- Card 2: Cocina (featured) -->
+    <div class="precio-card featured">
+      <div class="badge-popular">Más solicitado</div>
+      <div class="card-head">
+        <div class="card-label">Reforma de cocina</div>
+        <div class="card-title">Cocina completa</div>
+      </div>
+      <div class="card-body">
+        <p class="card-desc">Llave en mano: muebles, encimera, fontanería y electricidad. Ejemplo para 7 m².</p>
+        <div class="price-rows">
+          <div class="price-row">
+            <span style="display:inline-block;width:10px;height:10px;border-radius:50%;background:#4caf50;margin-right:8px;flex-shrink:0;"></span>
+            <span class="price-name">Económica</span>
+            <span class="price-val">~12.140 €</span>
+          </div>
+          <div class="price-row">
+            <span style="display:inline-block;width:10px;height:10px;border-radius:50%;background:#0057ff;margin-right:8px;flex-shrink:0;"></span>
+            <span class="price-name">Confort</span>
+            <span class="price-val">~16.440 €</span>
+          </div>
+          <div class="price-row">
+            <span style="display:inline-block;width:10px;height:10px;border-radius:50%;background:#e02020;margin-right:8px;flex-shrink:0;"></span>
+            <span class="price-name">Premium</span>
+            <span class="price-val" style="color:#e02020;">~26.900 €</span>
+          </div>
+        </div>
+        <a class="btn-presupuesto"
+           href="https://wa.me/34691774358?text=Hola%2C%20me%20interesa%20una%20reforma%20de%20cocina.%20%C2%BFPodéis%20darme%20un%20presupuesto%3F">
+          Pedir presupuesto por WhatsApp
+        </a>
+      </div>
+    </div>
 
-    <!-- Puntos -->
-    <div id="slider-dots" style="position:absolute;bottom:16px;right:28px;display:flex;gap:6px;">
-      <span onclick="irSlider(0)" style="width:8px;height:8px;border-radius:50%;background:white;cursor:pointer;opacity:1;"></span>
-      <span onclick="irSlider(1)" style="width:8px;height:8px;border-radius:50%;background:white;cursor:pointer;opacity:.4;"></span>
-      <span onclick="irSlider(2)" style="width:8px;height:8px;border-radius:50%;background:white;cursor:pointer;opacity:.4;"></span>
-      <span onclick="irSlider(3)" style="width:8px;height:8px;border-radius:50%;background:white;cursor:pointer;opacity:.4;"></span>
-      <span onclick="irSlider(4)" style="width:8px;height:8px;border-radius:50%;background:white;cursor:pointer;opacity:.4;"></span>
-      <span onclick="irSlider(5)" style="width:8px;height:8px;border-radius:50%;background:white;cursor:pointer;opacity:.4;"></span>
-      <span onclick="irSlider(6)" style="width:8px;height:8px;border-radius:50%;background:white;cursor:pointer;opacity:.4;"></span>
-      <span onclick="irSlider(7)" style="width:8px;height:8px;border-radius:50%;background:white;cursor:pointer;opacity:.4;"></span>
+    <!-- Card 3: Integral -->
+    <div class="precio-card">
+      <div class="card-head">
+        <div class="card-label">Reforma integral</div>
+        <div class="card-title">Piso o villa</div>
+      </div>
+      <div class="card-body">
+        <p class="card-desc">Reforma completa por m² útil. Toda la vivienda, sin sorpresas. Ejemplo para 70 m².</p>
+        <div class="price-rows">
+          <div class="price-row">
+            <span style="display:inline-block;width:10px;height:10px;border-radius:50%;background:#4caf50;margin-right:8px;flex-shrink:0;"></span>
+            <span class="price-name">Económica</span>
+            <span class="price-val">~36.850 €</span>
+          </div>
+          <div class="price-row">
+            <span style="display:inline-block;width:10px;height:10px;border-radius:50%;background:#002EB4;margin-right:8px;flex-shrink:0;"></span>
+            <span class="price-name">Confort</span>
+            <span class="price-val">~44.780 €</span>
+          </div>
+          <div class="price-row">
+            <span style="display:inline-block;width:10px;height:10px;border-radius:50%;background:#e02020;margin-right:8px;flex-shrink:0;"></span>
+            <span class="price-name">Premium</span>
+            <span class="price-val" style="color:#e02020;">~58.780 €</span>
+          </div>
+        </div>
+        <a class="btn-presupuesto"
+           href="https://wa.me/34691774358?text=Hola%2C%20me%20interesa%20una%20reforma%20integral%20de%20piso%20o%20villa.%20%C2%BFPodéis%20darme%20un%20presupuesto%3F">
+          Pedir presupuesto por WhatsApp
+        </a>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<!-- ② TRABAJOS REALIZADOS (slider) -->
+<div class="slider-section">
+  <div class="sec-head" style="padding-top:64px;">
+    <span class="sec-label">Proyectos reales</span>
+    <h2 class="sec-title">Trabajos realizados en Ibiza</h2>
+    <p class="sec-sub">Fitness · Climatización · Fontanería · Piscinas · Reformas</p>
+  </div>
+  <div class="slider-inner">
+    <div class="slider-track" id="slider-track">
+      <div class="slide"><img src="./Montaje force.jpeg"><div class="slide-caption"><span class="slide-tag">FITNESS</span><p class="slide-title">Montaje Force USA G12 · Villa privada Ibiza</p></div></div>
+      <div class="slide"><img src="./gym montaje.jpeg"><div class="slide-caption"><span class="slide-tag">FITNESS</span><p class="slide-title">Instalación gimnasio completo · Ibiza</p></div></div>
+      <div class="slide"><img src="./Aire perfumeria1.jpeg"><div class="slide-caption"><span class="slide-tag">CLIMATIZACIÓN</span><p class="slide-title">Mantenimiento A/C · Local comercial Ibiza</p></div></div>
+      <div class="slide"><img src="./Santander1.jpeg"><div class="slide-caption"><span class="slide-tag">FONTANERÍA</span><p class="slide-title">Reparación urgente · Banco Santander Ibiza</p></div></div>
+      <div class="slide"><img src="./Santander2.jpeg"><div class="slide-caption"><span class="slide-tag">FONTANERÍA</span><p class="slide-title">Obra fontanería · Banco Santander Ibiza</p></div></div>
+      <div class="slide"><img src="./Motor1.jpeg"><div class="slide-caption"><span class="slide-tag">PISCINAS</span><p class="slide-title">Reparación motor piscina · Villa Ibiza</p></div></div>
+      <div class="slide"><img src="./Fosa.jpeg"><div class="slide-caption"><span class="slide-tag">PISCINAS</span><p class="slide-title">Mantenimiento sistema filtración · Ibiza</p></div></div>
+      <div class="slide"><img src="./Aire casa ibiza.jpeg"><div class="slide-caption"><span class="slide-tag">CLIMATIZACIÓN</span><p class="slide-title">Limpieza y mantenimiento A/C · Casa Ibiza</p></div></div>
+    </div>
+    <button class="slider-btn prev" onclick="moverSlider(-1)">‹</button>
+    <button class="slider-btn next" onclick="moverSlider(1)">›</button>
+    <div class="slider-dots" id="slider-dots">
+      <span class="active"></span><span></span><span></span><span></span>
+      <span></span><span></span><span></span><span></span>
     </div>
   </div>
 </div>
+
+<!-- ③ SERVICIOS -->
+<div class="servicios-section">
+  <div class="sec-head" style="padding-top:0;">
+    <span class="sec-label">Lo que hacemos</span>
+    <h2 class="sec-title">Servicios</h2>
+  </div>
+  <div class="servicios-grid">
+    <div class="srv-card">
+      <img src="https://images.unsplash.com/photo-1566073771259-6a8506099945?w=600&q=80">
+      <div class="srv-body"><h3>Empresas y Hoteles</h3><p>Climatización, electricidad, mantenimiento integral. Equipos industriales, instalaciones eléctricas, prevención de averías, planes de mantenimiento.</p></div>
+    </div>
+    <div class="srv-card">
+      <img src="./Casa Ibiza.png">
+      <div class="srv-body"><h3>Viviendas y Villas de lujo</h3><p>Mantenimiento del hogar, fontanería, electricidad, aire acondicionado, reparaciones generales, jardines y piscinas.</p></div>
+    </div>
+    <div class="srv-card">
+      <img src="./Pintura.png">
+      <div class="srv-body"><h3>Pintura profesional</h3><p>Interior, exterior y acabados profesionales, preparación de superficies, pintura decorativa, protección de mobiliario.</p></div>
+    </div>
+    <div class="srv-card">
+      <img src="https://images.unsplash.com/photo-1576678927484-cc907957088c?w=600&q=80">
+      <div class="srv-body"><h3>Gimnasios y Piscinas</h3><p>Cintas de correr, máquinas elípticas, equipos de fuerza, ajustes, revisiones preventivas, limpieza y control de piscinas.</p></div>
+    </div>
+  </div>
+</div>
+
+<!-- ④ POR QUÉ ELEGIRNOS -->
+<div class="porque-section">
+  <div class="sec-head">
+    <span class="sec-label">Nuestro compromiso</span>
+    <h2 class="sec-title">¿Por qué elegirnos?</h2>
+  </div>
+  <div class="porque-grid">
+    <div class="porque-card"><h3>Más que un servicio</h3><p>Somos tu socio de confianza en Ibiza.</p></div>
+    <div class="porque-card"><h3>Servicio exclusivo</h3><p>Solo operamos en Ibiza, conocemos cada rincón.</p></div>
+    <div class="porque-card"><h3>Respuesta rápida</h3><p>Atención inmediata y eficaz.</p></div>
+    <div class="porque-card"><h3>24/7 con soporte profesional</h3><p>Atención continua con técnicos e IA.</p></div>
+    <div class="porque-card"><h3>Equipo cualificado</h3><p>Técnicos certificados con experiencia local.</p></div>
+    <div class="porque-card"><h3>Garantía total</h3><p>Respaldamos todos nuestros trabajos.</p></div>
+  </div>
+</div>
+
+<!-- ⑤ TESTIMONIOS -->
+<div class="testimonios-section">
+  <div class="sec-head">
+    <span class="sec-label">Opiniones verificadas</span>
+    <h2 class="sec-title">Lo que dicen nuestros clientes</h2>
+  </div>
+  <div class="test-grid">
+    <div class="test-card">
+      <div class="test-stars">★★★★★</div>
+      <p class="test-text">Excelente servicio de fontanería. Muy rápidos y profesionales.</p>
+      <div class="test-author">María González</div>
+      <div class="test-city">Ibiza Centro</div>
+    </div>
+    <div class="test-card">
+      <div class="test-stars">★★★★★</div>
+      <p class="test-text">Servicio de limpieza de coche impecable a domicilio.</p>
+      <div class="test-author">Carlos Martín</div>
+      <div class="test-city">San Antonio</div>
+    </div>
+    <div class="test-card">
+      <div class="test-stars">★★★★★</div>
+      <p class="test-text">Mantenimiento perfecto del gimnasio, muy recomendables.</p>
+      <div class="test-author">Hotel Ibiza de lujo</div>
+      <div class="test-city">Playa d'en Bossa</div>
+    </div>
+  </div>
+</div>
+
+<!-- ⑥ FORMULARIO -->
+<div style="padding:0 20px 72px;">
+  <div class="form-section">
+    <h2>¿No encuentras lo que necesitas?</h2>
+    <p>Consúltanos por WhatsApp. Trabajamos en toda Ibiza con la mejor calidad.</p>
+    <h3 style="font-size:17px;font-weight:700;margin-bottom:4px;">Solicitar presupuesto</h3>
+    <form onsubmit="event.preventDefault()">
+      <input type="text" placeholder="Nombre" required>
+      <input type="text" placeholder="Teléfono" required>
+      <input type="text" placeholder="Ciudad" required>
+      <input type="email" placeholder="Email" required>
+      <textarea placeholder="Descripción del servicio" required></textarea>
+      <button class="btn-submit" type="submit">Enviar solicitud</button>
+    </form>
+  </div>
+</div>
+
+<!-- FOOTER -->
+<footer>
+  <div style="margin-bottom:14px;display:flex;align-items:center;justify-content:center;gap:16px;flex-wrap:wrap;">
+    <a href="https://www.instagram.com/ibizamantenimiento/" target="_blank" style="color:#fff;">
+      <svg xmlns="http://www.w3.org/2000/svg" width="26" height="26" viewBox="0 0 24 24" fill="white"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg>
+    </a>
+    <a href="https://maps.app.goo.gl/KXB5h5Ch76GmotHd8" target="_blank">⭐⭐⭐⭐⭐ Reseñas Google</a>
+  </div>
+  © 2026 Ibiza Mantenimiento
+</footer>
+
+<!-- WA flotante -->
+<a class="wa-float" href="https://wa.me/34691774358?text=Hola%20quiero%20información">💬</a>
 
 <script>
-var sliderPos = 0;
-var totalSlides = 8;
+var sliderPos = 0, totalSlides = 8;
 function moverSlider(dir) {
   sliderPos = (sliderPos + dir + totalSlides) % totalSlides;
-  actualizarSlider();
-}
-function irSlider(n) {
-  sliderPos = n;
   actualizarSlider();
 }
 function actualizarSlider() {
   document.getElementById('slider-track').style.transform = 'translateX(-' + (sliderPos * 100) + '%)';
   var dots = document.getElementById('slider-dots').children;
   for (var i = 0; i < dots.length; i++) {
-    dots[i].style.opacity = i === sliderPos ? '1' : '.4';
+    dots[i].className = i === sliderPos ? 'active' : '';
   }
 }
 setInterval(function(){ moverSlider(1); }, 4000);
 </script>
-<!-- FIN TRABAJOS REALIZADOS -->
-<!-- TESTIMONIOS -->
-<div class="section-title">Lo que dicen nuestros clientes</div>
-
-<div class="grid">
-
-<div class="card"><div class="card-content">
-<p>⭐⭐⭐⭐⭐</p>
-<p>Excelente servicio de fontanería. Muy rápidos y profesionales.</p>
-<p><strong>María González</strong><br>Ibiza Centro</p>
-</div></div>
-
-<div class="card"><div class="card-content">
-<p>⭐⭐⭐⭐⭐</p>
-<p>Servicio de limpieza de coche impecable a domicilio.</p>
-<p><strong>Carlos Martín</strong><br>San Antonio</p>
-</div></div>
-
-<div class="card"><div class="card-content">
-<p>⭐⭐⭐⭐⭐</p>
-<p>Mantenimiento perfecto del gimnasio, muy recomendables.</p>
-<p><strong>Hotel Ibiza de lujo</strong><br>Playa d’en Bossa</p>
-</div></div>
-
-</div>
-
-<!-- FORMULARIO -->
-<div class="form-section">
-
-<h2>¿No encuentras lo que necesitas?</h2>
-<p>Consúltanos por WhatsApp. Trabajamos en toda Ibiza con la mejor calidad.</p>
-
-<h3>Solicitar presupuesto</h3>
-
-<form action="mailto:infoibizamantenimiento@gmail.com" method="post" enctype="text/plain">
-
-<input type="text" name="nombre" placeholder="Nombre" required>
-<input type="text" name="telefono" placeholder="Teléfono" required>
-<input type="text" name="ciudad" placeholder="Ciudad" required>
-<input type="email" name="email" placeholder="Email" required>
-<textarea name="descripcion" placeholder="Descripción del servicio" required></textarea>
-
-<button class="btn" type="submit">Enviar solicitud</button>
-
-</form>
-
-</div>
-
-<footer>
-  <div style="margin-bottom:16px;">
-  <a href="https://www.instagram.com/ibizamantenimiento/" target="_blank" style="color:white;text-decoration:none;margin:0 10px;font-size:22px;" title="Instagram">
-    <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="white"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg>
-  </a>
-  <a href="https://maps.app.goo.gl/KXB5h5Ch76GmotHd8" target="_blank" style="color:#FFD700;text-decoration:none;margin:0 10px;font-size:15px;font-weight:500;">
-    ⭐⭐⭐⭐⭐ Reseñas Google
-  </a>
-</div>
-© 2026 Ibiza Mantenimiento
-</footer>
-
-<a class="whatsapp" href="https://wa.me/34691774358?text=Hola%20quiero%20información">💬</a>
-
-</body>
-</html>
