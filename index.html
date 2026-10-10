@@ -1,3 +1,8 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Ibiza Mantenimiento</title>
 <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
 
@@ -108,13 +113,11 @@ header p  { font-size: 18px; opacity: .9; margin-bottom: 0; }
   text-transform: uppercase; padding: 5px 44px;
   transform: rotate(35deg); z-index: 2;
 }
-
 .card-head {
   padding: 22px 24px 18px;
   background: var(--blue);
 }
 .precio-card.featured .card-head { background: var(--blue2); }
-
 .card-label {
   font-size: 10px; font-weight: 700; letter-spacing: 2px;
   text-transform: uppercase; color: rgba(255,255,255,.65);
@@ -124,7 +127,6 @@ header p  { font-size: 18px; opacity: .9; margin-bottom: 0; }
   font-size: 20px; font-weight: 800; color: #fff;
   line-height: 1.2;
 }
-
 .card-body {
   padding: 20px 22px 22px;
   display: flex; flex-direction: column; flex: 1;
@@ -133,22 +135,18 @@ header p  { font-size: 18px; opacity: .9; margin-bottom: 0; }
   font-size: 13px; color: var(--fg2);
   margin-bottom: 18px; line-height: 1.55;
 }
-
-/* price rows — same height, same baseline */
 .price-rows { display: flex; flex-direction: column; gap: 9px; margin-bottom: 22px; }
 .price-row {
   display: flex; align-items: center;
   background: var(--pill-bg); border-radius: 9px;
-  padding: 10px 14px; gap: 0;
+  padding: 10px 14px;
 }
+.price-dot { width: 10px; height: 10px; border-radius: 50%; margin-right: 10px; flex-shrink: 0; }
 .price-name { font-size: 13px; font-weight: 500; color: var(--fg); flex: 1; }
-.price-val  {
-  font-size: 14px; font-weight: 700; color: var(--blue);
-  white-space: nowrap; margin-left: auto;
-}
+.price-val  { font-size: 14px; font-weight: 700; color: var(--blue); white-space: nowrap; }
 .precio-card.featured .price-val { color: var(--blue2); }
+.price-val.premium { color: #e02020; }
 
-/* WhatsApp button */
 .btn-presupuesto {
   display: block; text-align: center;
   background: var(--wa); color: #fff;
@@ -167,9 +165,7 @@ header p  { font-size: 18px; opacity: .9; margin-bottom: 0; }
   margin: 0 auto; overflow: hidden;
   border-radius: 16px;
 }
-.slider-track {
-  display: flex; transition: transform .4s ease; height: 420px;
-}
+.slider-track { display: flex; transition: transform .4s ease; height: 420px; }
 .slide { min-width: 100%; position: relative; }
 .slide img { width: 100%; height: 100%; object-fit: cover; }
 .slide-caption {
@@ -182,10 +178,7 @@ header p  { font-size: 18px; opacity: .9; margin-bottom: 0; }
   font-size: 11px; font-weight: 700;
   padding: 4px 12px; border-radius: 20px; letter-spacing: 1px;
 }
-.slide-title {
-  color: #fff; font-size: 18px; font-weight: 700;
-  margin: 8px 0 0;
-}
+.slide-title { color: #fff; font-size: 18px; font-weight: 700; margin: 8px 0 0; }
 .slider-btn {
   position: absolute; top: 50%; transform: translateY(-50%);
   background: rgba(255,255,255,.9); border: none;
@@ -195,14 +188,10 @@ header p  { font-size: 18px; opacity: .9; margin-bottom: 0; }
 }
 .slider-btn.prev { left: 16px; }
 .slider-btn.next { right: 16px; }
-.slider-dots {
-  position: absolute; bottom: 16px; right: 28px;
-  display: flex; gap: 6px;
-}
+.slider-dots { position: absolute; bottom: 16px; right: 28px; display: flex; gap: 6px; }
 .slider-dots span {
   width: 8px; height: 8px; border-radius: 50%;
-  background: #fff; cursor: pointer; opacity: .4;
-  transition: opacity .2s;
+  background: #fff; cursor: pointer; opacity: .4; transition: opacity .2s;
 }
 .slider-dots span.active { opacity: 1; }
 
@@ -213,10 +202,7 @@ header p  { font-size: 18px; opacity: .9; margin-bottom: 0; }
   grid-template-columns: repeat(auto-fit, minmax(240px,1fr));
   gap: 22px; max-width: 1100px; margin: 0 auto;
 }
-.srv-card {
-  background: #fff; border-radius: 14px; overflow: hidden;
-  box-shadow: 0 8px 24px rgba(0,0,0,.07);
-}
+.srv-card { background: #fff; border-radius: 14px; overflow: hidden; box-shadow: 0 8px 24px rgba(0,0,0,.07); }
 .srv-card img { width: 100%; height: 180px; object-fit: cover; display: block; }
 .srv-body { padding: 18px; }
 .srv-body h3 { margin: 0 0 8px; font-size: 17px; font-weight: 700; }
@@ -229,10 +215,7 @@ header p  { font-size: 18px; opacity: .9; margin-bottom: 0; }
   grid-template-columns: repeat(auto-fit, minmax(220px,1fr));
   gap: 18px; max-width: 1100px; margin: 0 auto;
 }
-.porque-card {
-  background: #fff; border-radius: 14px; padding: 22px;
-  box-shadow: 0 4px 16px rgba(0,46,180,.08);
-}
+.porque-card { background: #fff; border-radius: 14px; padding: 22px; box-shadow: 0 4px 16px rgba(0,46,180,.08); }
 .porque-card h3 { font-size: 16px; font-weight: 700; margin: 0 0 8px; color: var(--blue); }
 .porque-card p  { font-size: 13px; color: var(--fg2); margin: 0; }
 
@@ -243,10 +226,7 @@ header p  { font-size: 18px; opacity: .9; margin-bottom: 0; }
   grid-template-columns: repeat(auto-fit, minmax(240px,1fr));
   gap: 20px; max-width: 1100px; margin: 0 auto;
 }
-.test-card {
-  background: #fff; border-radius: 14px; padding: 22px;
-  box-shadow: 0 6px 20px rgba(0,0,0,.07);
-}
+.test-card { background: #fff; border-radius: 14px; padding: 22px; box-shadow: 0 6px 20px rgba(0,0,0,.07); }
 .test-stars { color: #f5a623; font-size: 18px; margin-bottom: 10px; }
 .test-text   { font-size: 14px; color: var(--fg2); margin-bottom: 14px; line-height: 1.55; }
 .test-author { font-size: 14px; font-weight: 700; color: var(--fg); }
@@ -269,17 +249,13 @@ textarea { min-height: 100px; }
 .btn-submit {
   display: inline-block; margin-top: 18px;
   padding: 13px 28px; background: var(--wa);
-  color: #fff; text-decoration: none; border-radius: 10px;
-  font-weight: 700; font-size: 14px; border: none; cursor: pointer;
+  color: #fff; border: none; cursor: pointer;
+  border-radius: 10px; font-weight: 700; font-size: 14px;
   font-family: 'Poppins', sans-serif;
 }
 
 /* ── FOOTER ── */
-footer {
-  text-align: center; padding: 30px 20px;
-  background: #111; color: #fff;
-  font-size: 14px;
-}
+footer { text-align: center; padding: 30px 20px; background: #111; color: #fff; font-size: 14px; }
 footer a { color: #FFD700; text-decoration: none; }
 
 /* ── WA FLOAT ── */
@@ -292,6 +268,8 @@ footer a { color: #FFD700; text-decoration: none; }
   box-shadow: 0 4px 16px rgba(37,211,102,.4);
 }
 </style>
+</head>
+<body>
 
 <!-- NAV -->
 <nav>
@@ -310,17 +288,15 @@ footer a { color: #FFD700; text-decoration: none; }
   <a class="btn-wa" href="https://wa.me/34691774358?text=Hola%20quiero%20información">WhatsApp</a>
 </header>
 
-<!-- ① TARIFAS DE EJEMPLO -->
+<!-- ① TARIFAS -->
 <div class="precios-wrap">
   <div class="sec-head">
     <span class="sec-label">Tarifas orientativas</span>
     <h2 class="sec-title">Ejemplos de reforma</h2>
     <p class="sec-sub">Precios orientativos con material, mano de obra y gestión incluidos</p>
   </div>
-
   <div class="precios-grid">
 
-    <!-- Card 1: Baño -->
     <div class="precio-card">
       <div class="card-head">
         <div class="card-label">Reforma de baño</div>
@@ -329,30 +305,14 @@ footer a { color: #FFD700; text-decoration: none; }
       <div class="card-body">
         <p class="card-desc">Precio por m² incluye material, mano de obra y gestión. Ejemplo para 5 m².</p>
         <div class="price-rows">
-          <div class="price-row">
-            <span style="display:inline-block;width:10px;height:10px;border-radius:50%;background:#4caf50;margin-right:8px;flex-shrink:0;"></span>
-            <span class="price-name">Económica</span>
-            <span class="price-val">~5.730 €</span>
-          </div>
-          <div class="price-row">
-            <span style="display:inline-block;width:10px;height:10px;border-radius:50%;background:#002EB4;margin-right:8px;flex-shrink:0;"></span>
-            <span class="price-name">Confort</span>
-            <span class="price-val">~7.300 €</span>
-          </div>
-          <div class="price-row">
-            <span style="display:inline-block;width:10px;height:10px;border-radius:50%;background:#e02020;margin-right:8px;flex-shrink:0;"></span>
-            <span class="price-name">Premium</span>
-            <span class="price-val" style="color:#e02020;">~9.400 €</span>
-          </div>
+          <div class="price-row"><span class="price-dot" style="background:#4caf50;"></span><span class="price-name">Económica</span><span class="price-val">~5.730 €</span></div>
+          <div class="price-row"><span class="price-dot" style="background:#002EB4;"></span><span class="price-name">Confort</span><span class="price-val">~7.300 €</span></div>
+          <div class="price-row"><span class="price-dot" style="background:#e02020;"></span><span class="price-name">Premium</span><span class="price-val premium">~9.400 €</span></div>
         </div>
-        <a class="btn-presupuesto"
-           href="https://wa.me/34691774358?text=Hola%2C%20me%20interesa%20una%20reforma%20de%20ba%C3%B1o.%20%C2%BFPodéis%20darme%20un%20presupuesto%3F">
-          Pedir presupuesto por WhatsApp
-        </a>
+        <a class="btn-presupuesto" href="https://wa.me/34691774358?text=Hola%2C%20me%20interesa%20una%20reforma%20de%20ba%C3%B1o.%20%C2%BFPodéis%20darme%20un%20presupuesto%3F">Pedir presupuesto por WhatsApp</a>
       </div>
     </div>
 
-    <!-- Card 2: Cocina (featured) -->
     <div class="precio-card featured">
       <div class="badge-popular">Más solicitado</div>
       <div class="card-head">
@@ -362,30 +322,14 @@ footer a { color: #FFD700; text-decoration: none; }
       <div class="card-body">
         <p class="card-desc">Llave en mano: muebles, encimera, fontanería y electricidad. Ejemplo para 7 m².</p>
         <div class="price-rows">
-          <div class="price-row">
-            <span style="display:inline-block;width:10px;height:10px;border-radius:50%;background:#4caf50;margin-right:8px;flex-shrink:0;"></span>
-            <span class="price-name">Económica</span>
-            <span class="price-val">~12.140 €</span>
-          </div>
-          <div class="price-row">
-            <span style="display:inline-block;width:10px;height:10px;border-radius:50%;background:#0057ff;margin-right:8px;flex-shrink:0;"></span>
-            <span class="price-name">Confort</span>
-            <span class="price-val">~16.440 €</span>
-          </div>
-          <div class="price-row">
-            <span style="display:inline-block;width:10px;height:10px;border-radius:50%;background:#e02020;margin-right:8px;flex-shrink:0;"></span>
-            <span class="price-name">Premium</span>
-            <span class="price-val" style="color:#e02020;">~26.900 €</span>
-          </div>
+          <div class="price-row"><span class="price-dot" style="background:#4caf50;"></span><span class="price-name">Económica</span><span class="price-val">~12.140 €</span></div>
+          <div class="price-row"><span class="price-dot" style="background:#0057ff;"></span><span class="price-name">Confort</span><span class="price-val">~16.440 €</span></div>
+          <div class="price-row"><span class="price-dot" style="background:#e02020;"></span><span class="price-name">Premium</span><span class="price-val premium">~26.900 €</span></div>
         </div>
-        <a class="btn-presupuesto"
-           href="https://wa.me/34691774358?text=Hola%2C%20me%20interesa%20una%20reforma%20de%20cocina.%20%C2%BFPodéis%20darme%20un%20presupuesto%3F">
-          Pedir presupuesto por WhatsApp
-        </a>
+        <a class="btn-presupuesto" href="https://wa.me/34691774358?text=Hola%2C%20me%20interesa%20una%20reforma%20de%20cocina.%20%C2%BFPodéis%20darme%20un%20presupuesto%3F">Pedir presupuesto por WhatsApp</a>
       </div>
     </div>
 
-    <!-- Card 3: Integral -->
     <div class="precio-card">
       <div class="card-head">
         <div class="card-label">Reforma integral</div>
@@ -394,33 +338,18 @@ footer a { color: #FFD700; text-decoration: none; }
       <div class="card-body">
         <p class="card-desc">Reforma completa por m² útil. Toda la vivienda, sin sorpresas. Ejemplo para 70 m².</p>
         <div class="price-rows">
-          <div class="price-row">
-            <span style="display:inline-block;width:10px;height:10px;border-radius:50%;background:#4caf50;margin-right:8px;flex-shrink:0;"></span>
-            <span class="price-name">Económica</span>
-            <span class="price-val">~36.850 €</span>
-          </div>
-          <div class="price-row">
-            <span style="display:inline-block;width:10px;height:10px;border-radius:50%;background:#002EB4;margin-right:8px;flex-shrink:0;"></span>
-            <span class="price-name">Confort</span>
-            <span class="price-val">~44.780 €</span>
-          </div>
-          <div class="price-row">
-            <span style="display:inline-block;width:10px;height:10px;border-radius:50%;background:#e02020;margin-right:8px;flex-shrink:0;"></span>
-            <span class="price-name">Premium</span>
-            <span class="price-val" style="color:#e02020;">~58.780 €</span>
-          </div>
+          <div class="price-row"><span class="price-dot" style="background:#4caf50;"></span><span class="price-name">Económica</span><span class="price-val">~36.850 €</span></div>
+          <div class="price-row"><span class="price-dot" style="background:#002EB4;"></span><span class="price-name">Confort</span><span class="price-val">~44.780 €</span></div>
+          <div class="price-row"><span class="price-dot" style="background:#e02020;"></span><span class="price-name">Premium</span><span class="price-val premium">~58.780 €</span></div>
         </div>
-        <a class="btn-presupuesto"
-           href="https://wa.me/34691774358?text=Hola%2C%20me%20interesa%20una%20reforma%20integral%20de%20piso%20o%20villa.%20%C2%BFPodéis%20darme%20un%20presupuesto%3F">
-          Pedir presupuesto por WhatsApp
-        </a>
+        <a class="btn-presupuesto" href="https://wa.me/34691774358?text=Hola%2C%20me%20interesa%20una%20reforma%20integral%20de%20piso%20o%20villa.%20%C2%BFPodéis%20darme%20un%20presupuesto%3F">Pedir presupuesto por WhatsApp</a>
       </div>
     </div>
 
   </div>
 </div>
 
-<!-- ② TRABAJOS REALIZADOS (slider) -->
+<!-- ② TRABAJOS REALIZADOS -->
 <div class="slider-section">
   <div class="sec-head" style="padding-top:64px;">
     <span class="sec-label">Proyectos reales</span>
@@ -438,8 +367,8 @@ footer a { color: #FFD700; text-decoration: none; }
       <div class="slide"><img src="./Fosa.jpeg"><div class="slide-caption"><span class="slide-tag">PISCINAS</span><p class="slide-title">Mantenimiento sistema filtración · Ibiza</p></div></div>
       <div class="slide"><img src="./Aire casa ibiza.jpeg"><div class="slide-caption"><span class="slide-tag">CLIMATIZACIÓN</span><p class="slide-title">Limpieza y mantenimiento A/C · Casa Ibiza</p></div></div>
     </div>
-    <button class="slider-btn prev" onclick="moverSlider(-1)">‹</button>
-    <button class="slider-btn next" onclick="moverSlider(1)">›</button>
+    <button class="slider-btn prev" onclick="moverSlider(-1)">&#8249;</button>
+    <button class="slider-btn next" onclick="moverSlider(1)">&#8250;</button>
     <div class="slider-dots" id="slider-dots">
       <span class="active"></span><span></span><span></span><span></span>
       <span></span><span></span><span></span><span></span>
@@ -523,12 +452,12 @@ footer a { color: #FFD700; text-decoration: none; }
     <h2>¿No encuentras lo que necesitas?</h2>
     <p>Consúltanos por WhatsApp. Trabajamos en toda Ibiza con la mejor calidad.</p>
     <h3 style="font-size:17px;font-weight:700;margin-bottom:4px;">Solicitar presupuesto</h3>
-    <form onsubmit="event.preventDefault()">
-      <input type="text" placeholder="Nombre" required>
-      <input type="text" placeholder="Teléfono" required>
-      <input type="text" placeholder="Ciudad" required>
-      <input type="email" placeholder="Email" required>
-      <textarea placeholder="Descripción del servicio" required></textarea>
+    <form action="mailto:infoibizamantenimiento@gmail.com" method="post" enctype="text/plain">
+      <input type="text" name="nombre" placeholder="Nombre" required>
+      <input type="text" name="telefono" placeholder="Teléfono" required>
+      <input type="text" name="ciudad" placeholder="Ciudad" required>
+      <input type="email" name="email" placeholder="Email" required>
+      <textarea name="descripcion" placeholder="Descripción del servicio" required></textarea>
       <button class="btn-submit" type="submit">Enviar solicitud</button>
     </form>
   </div>
@@ -545,7 +474,6 @@ footer a { color: #FFD700; text-decoration: none; }
   © 2026 Ibiza Mantenimiento
 </footer>
 
-<!-- WA flotante -->
 <a class="wa-float" href="https://wa.me/34691774358?text=Hola%20quiero%20información">💬</a>
 
 <script>
@@ -563,3 +491,6 @@ function actualizarSlider() {
 }
 setInterval(function(){ moverSlider(1); }, 4000);
 </script>
+
+</body>
+</html>
