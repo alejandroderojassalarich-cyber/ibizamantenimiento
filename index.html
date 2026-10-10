@@ -18,6 +18,7 @@ body {
   background: var(--bg);
   color: var(--fg);
   margin: 0;
+  overflow-x: hidden;
 }
 
 /* ── NAV ── */
@@ -70,7 +71,22 @@ header p  { font-size: 18px; opacity: .9; margin-bottom: 0; }
   max-width: 1040px;
   margin: 0 auto;
 }
-@media (max-width: 860px) { .precios-grid { grid-template-columns: 1fr; max-width: 440px; } }
+@media (max-width: 860px) {
+  .precios-grid { grid-template-columns: 1fr; max-width: 480px; }
+  .badge-popular { right: -26px; font-size: 8px; padding: 4px 38px; }
+}
+@media (max-width: 480px) {
+  header h1 { font-size: 1.7rem; }
+  header p  { font-size: 15px; }
+  .sec-title { font-size: 1.3rem; }
+  .precios-wrap, .slider-section, .servicios-section,
+  .porque-section, .testimonios-section { padding-left: 14px; padding-right: 14px; }
+  .form-section { padding: 24px 18px; }
+  .slider-inner { border-radius: 10px; }
+  .slider-track { height: 280px; }
+  .slide-title  { font-size: 14px; }
+  .srv-card img { height: 150px; }
+}
 
 .precio-card {
   background: var(--white);
